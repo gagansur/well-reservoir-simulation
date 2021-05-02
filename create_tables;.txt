@@ -1,0 +1,79 @@
+create database uhd5318;
+use uhd5318;
+CREATE TABLE Well (
+    well_id int NOT NULL AUTO_INCREMENT,
+    well_name NVARCHAR(30) NOT NULL,
+    PRIMARY KEY (well_id)
+);
+
+CREATE TABLE Wellbore (
+    wellbore_id int NOT NULL AUTO_INCREMENT,
+	wellbore_name NVARCHAR(30), 
+	well_id int NOT NULL,
+	PRIMARY KEY (wellbore_id),
+    FOREIGN KEY (well_id) REFERENCES Well(well_id)
+);
+
+CREATE TABLE Perforation(
+    perforation_id int NOT NULL AUTO_INCREMENT,
+	start_md DOUBLE NOT NULL, 
+	end_md DOUBLE NOT NULL,
+	rscale_factor DOUBLE NOT NULL,
+	wellbore_id INT NOT NULL,
+	PRIMARY KEY (perforation_id),
+    FOREIGN KEY (wellbore_id) REFERENCES Wellbore(wellbore_id)
+);
+
+CREATE TABLE FlowModel(
+    flow_model_id int NOT NULL AUTO_INCREMENT,
+	name nvarchar(50) NOT NULL, 
+	pressure_gradient DOUBLE NOT NULL,
+	PRIMARY KEY (flow_model_id)   
+);
+
+
+CREATE TABLE FlowModelWellboreMap(
+    flow_model_wellbore_id int NOT NULL AUTO_INCREMENT,
+    flow_model_id int NOT NULL,
+	wellbore_id INT NOT NULL,	
+	PRIMARY KEY (flow_model_wellbore_id),
+	FOREIGN KEY (flow_model_id) REFERENCES FlowModel(flow_model_id),
+	FOREIGN KEY (wellbore_id) REFERENCES Wellbore(wellbore_id)
+);
+	
+Create Table ReservoirConnection (
+reservoir_connection_id int NOT NULL AUTO_INCREMENT,
+entry_md double NOT NULL, 
+entry_point_x double NOT NULL,
+entry_point_y double NOT NULL,
+entry_point_z double NOT NULL, 
+exit_md double NOT NULL, 
+exit_point_x double NOT NULL, 
+exit_point_y double NOT NULL, 
+exit_point_z double NOT NULL, 
+rscale_factor double NOT NULL, 
+perf_frac double NOT NULL, 
+transmissibility double NOT NULL, 
+scale_factor double NOT NULL, 
+wellbore_id INT NOT NULL,
+	PRIMARY KEY (reservoir_connection_id),
+    FOREIGN KEY (wellbore_id) REFERENCES Wellbore(wellbore_id)
+);
+
+Create Table Wellhead(
+wellhead_id int NOT NULL AUTO_INCREMENT, 
+well_id INT NOT NULL,
+PRIMARY KEY (wellhead_id),
+FOREIGN KEY (well_id) REFERENCES Well(well_id)
+);
+
+Create Table SeparatorFacility(
+separator_id int NOT NULL AUTO_INCREMENT,
+name NVARCHAR(30) NOT NULL, 
+output_stream NVARCHAR(30) NOT NULL, 
+input_stream NVARCHAR(30) NOT NULL, 
+wellhead_id INT NOT NULL,
+primary key(separator_id),
+FOREIGN KEY (wellhead_id) 
+REFERENCES wellhead(wellhead_id)
+);

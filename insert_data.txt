@@ -1,0 +1,187 @@
+delete from perforation;
+delete from wellbore;
+delete from well;
+
+INSERT INTO well(well_name) values("P1");
+INSERT INTO well(well_name) values("P2");
+INSERT INTO well(well_name) values("P3");
+INSERT INTO well(well_name) values("P4");
+INSERT INTO well(well_name) values("P5");
+INSERT INTO well(well_name) values("I1");
+INSERT INTO well(well_name) values("I2");
+INSERT INTO well(well_name) values("I3");
+INSERT INTO well(well_name) values("I4");
+INSERT INTO well(well_name) values("I5");
+
+INSERT INTO wellbore(wellbore_name, well_id) values("P1", 1);
+INSERT INTO wellbore(wellbore_name, well_id) values("P1_branch1", 1);
+
+INSERT INTO wellbore(wellbore_name, well_id) values("P2", 2);
+INSERT INTO wellbore(wellbore_name, well_id) values("P2_branch1", 2);
+
+INSERT INTO wellbore(wellbore_name, well_id) values("P3", 3);
+INSERT INTO wellbore(wellbore_name, well_id) values("P3_branch1", 3);
+
+INSERT INTO wellbore(wellbore_name, well_id) values("P4", 4);
+INSERT INTO wellbore(wellbore_name, well_id) values("P4_branch1", 4);
+
+INSERT INTO wellbore(wellbore_name, well_id) values("P5", 5);
+INSERT INTO wellbore(wellbore_name, well_id) values("P5_branch1", 5);
+
+INSERT INTO wellbore(wellbore_name, well_id) values("I1", 6);
+INSERT INTO wellbore(wellbore_name, well_id) values("I2", 7);
+INSERT INTO wellbore(wellbore_name, well_id) values("I3", 8);
+INSERT INTO wellbore(wellbore_name, well_id) values("I4", 9);
+INSERT INTO wellbore(wellbore_name, well_id) values("I5", 10);
+
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(11000, 11500, .1, 1);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(12000, 12500, .2, 2);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(13000, 13500, .3, 3);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(14000, 14500, .4, 4);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(15000, 15500, .5, 5);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(16000, 16500, .6, 6);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(17000, 17500, .7, 7);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(18000, 18500, .8, 8);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(19000, 19500, .9, 9);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(20000, 20500, 1, 10);
+
+
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(12000, 12500, 1, 11);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(14000, 14500, 1, 12);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(16000, 16500, 1, 13);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(18000, 18500, 1, 14);
+INSERT INTO PERFORATION(start_md, end_md,rscale_factor, wellbore_id) VALUES(20000, 20500, 1, 15);
+
+INSERT INTO FlowModel(name, pressure_gradient) VALUES('const-pressure-0', 0.89892);
+
+INSERT INTO FlowModel(name, pressure_gradient) VALUES('const-pressure-low-pressure-drop', 0.98349);
+
+INSERT INTO FlowModel(name, pressure_gradient) VALUES('const-pressure-high-pressure-drop', 0.234349);
+
+INSERT INTO FlowModel(name, pressure_gradient) VALUES('const-pressure-med-pressure-drop', 0.554349);
+
+INSERT INTO FlowModelWellboreMap(flow_model_id, wellbore_id) values(1, 1);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(1, 2);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(2, 3);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(2, 4);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(3, 5);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(3, 6);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(1, 7);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(2, 8);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(3, 9);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(1, 10);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(2, 11);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(3, 12);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(1, 13);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(2, 14);
+INSERT INTO FlowModelWellboreMap (flow_model_id, wellbore_id) values(3, 15);
+
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(11000, 1128, 1891, 11000, 11500, 1128, 1891, 11500, 0.8, .8, 23.23, .5, 1);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(12000, 2128, 2891, 12000, 12500, 2128, 2891, 12500, 0.8, .8, 23.23, .5, 2);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(13000, 3128, 3891, 13000, 13500, 3128, 3891, 13500, 0.8, .8, 23.23, .5, 3);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(14000, 4128, 4891, 14000, 14500, 4128, 4891, 14500, 0.8, .8, 23.23, .5, 4);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(15000, 5128, 5891, 15000, 15500, 5128, 5891, 15500, 0.8, .8, 23.23, .5, 5);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(16000, 6128, 6891, 16000, 16500, 6128, 6891, 16500, 0.8, .8, 23.23, .5, 6);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(17000, 7128, 7891, 17000, 17500, 7128, 7891, 17500, 0.8, .8, 23.23, .5, 7);
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(18000, 8128, 8891, 18000, 18500, 8128, 8891, 18500, 0.8, .8, 23.23, .5, 8);
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(19000, 9128, 9891, 19000, 19500, 9128, 9891, 19500, 0.8, .8, 23.23, .5, 9);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(20000, 10128, 10891, 20000, 20500, 10128, 10891, 20500, 0.8, .8, 23.23, .5, 10);
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(11000, 1128, 1891, 11000, 11500, 1128, 1891, 11500, 0.8, .8, 23.23, .5, 11);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(12000, 2128, 2891, 12000, 12500, 2128, 2891, 12500, 0.8, .8, 23.23, .5, 12);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(13000, 3128, 3891, 13000, 13500, 3128, 3891, 13500, 0.8, .8, 23.23, .5, 13);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(14000, 4128, 4891, 14000, 14500, 4128, 4891, 14500, 0.8, .8, 23.23, .5, 14);
+
+
+INSERT INTO ReservoirConnection(entry_md,entry_point_x,entry_point_y,
+entry_point_z, exit_md, exit_point_x, exit_point_y, exit_point_z, rscale_factor, perf_frac, transmissibility, scale_factor, wellbore_id) VALUES(15000, 5128, 5891, 15000, 15500, 5128, 5891, 15500, 0.8, .8, 23.23, .5, 15);
+
+Create Table Wellhead(
+wellhead_id int NOT NULL AUTO_INCREMENT, 
+well_id INT NOT NULL,
+PRIMARY KEY (wellhead_id),
+FOREIGN KEY (well_id) REFERENCES Well(well_id)
+);
+
+INSERT INTO Wellhead(well_id) VALUES(1);
+INSERT INTO Wellhead(well_id) VALUES(2);
+INSERT INTO Wellhead(well_id) VALUES(3);
+INSERT INTO Wellhead(well_id) VALUES(4);
+INSERT INTO Wellhead(well_id) VALUES(5);
+INSERT INTO Wellhead(well_id) VALUES(6);
+INSERT INTO Wellhead(well_id) VALUES(7);
+INSERT INTO Wellhead(well_id) VALUES(8);
+INSERT INTO Wellhead(well_id) VALUES(9);
+INSERT INTO Wellhead(well_id) VALUES(10);
+
+INSERT INTO SeparatorFacility(name,output_stream,input_stream) VALUES("sep-owg", "ow,g", "owg");
+INSERT INTO SeparatorFacility(name,output_stream,input_stream) VALUES("sep-ogw", "o,wg", "owg");
+INSERT INTO SeparatorFacility(name,output_stream,input_stream) VALUES("sep-gwo", "og,w", "owg");
+INSERT INTO SeparatorFacility(name,output_stream,input_stream) 
+VALUES("sep-ow", "o,w", "ow");
+INSERT INTO SeparatorFacility(name,output_stream,input_stream) 
+VALUES("sep-wg", "w,g", "wg");
+INSERT INTO SeparatorFacility(name,output_stream,input_stream) 
+VALUES("sep-og", "o,g", "og");
+
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(1,1);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(1,4);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(2,2);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(2,5);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(3,3);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(3,6);
+
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(4,1);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(4,4);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(5,2);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(5,5);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(6,3);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(6,6);
+
+
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(7,1);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(7,4);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(8,2);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(8,5);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(9,3);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(9,6);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(10,1);
+INSERT INTO SeparatorFacilityWellMap(wellhead_id,separator_id) VALUES(10,4);

@@ -1,0 +1,1 @@
+ariaDB [uhd5318]> select * from well, wellbore where well.well_id = 1 and well.well_id = wellbore.well_id;

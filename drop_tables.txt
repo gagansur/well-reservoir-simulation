@@ -1,0 +1,8 @@
+drop table separatorfacility;
+drop table wellhead;
+drop table flowmodelwellboremap;
+drop table flowmodel;
+drop table perforation;
+drop table reservoirconnection;
+drop table wellbore;
+drop table well;
